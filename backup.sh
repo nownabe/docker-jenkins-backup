@@ -19,7 +19,7 @@ EOF
 [ "${AWS_S3_HOST:-UNDEF}" = "UNDEF" ] || echo "aws_s3_host: ${AWS_S3_HOST}" >> ${s3config}
 
 : "Download Backups"
-/opt/s3sync/s3sync.rb -r ${s3_url} ${backup_dir}
+/opt/s3sync/s3sync.rb -r ${s3_url} ${backup_dir}/
 
 : "Backup Jenkins and remove old backups"
 /usr/local/bin/jenkins-backup ${jenkins_home} \
@@ -30,6 +30,6 @@ find ${backup_dir} -type f \
         | xargs rm -f
 
 : "Sync Backups to S3"
-/opt/s3sync/s3sync.rb -r --delete ${backup_dir} ${s3_url}
+/opt/s3sync/s3sync.rb -r --delete ${backup_dir}/ ${s3_url}
 
 
