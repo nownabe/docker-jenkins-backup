@@ -24,7 +24,7 @@ EOF
 : "Backup Jenkins and remove old backups"
 /usr/local/bin/jenkins-backup ${jenkins_home} \
         ${backup_dir}/jenkins-backup_`date +%Y%m%d%H%M%S`.tar.gz
-find /backup -type f \
+find ${backup_dir} -type f \
         -name "jenkins-backup_*.tar.gz" \
         -daystart -mtime +${BACKUP_EXPIRE:=30} \
         | xargs rm -f
