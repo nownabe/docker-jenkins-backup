@@ -26,6 +26,7 @@ And optional variables are:
 * `AWS_S3_HOST`: default is null.
 * `BACKUP_PREFIX`: default is `""`. Note that using `BACKUP_PREFIX` make sure end is `"/"`. (e.g. `BACKUP_PREFIX=jenkins/`)
 * `BACKUP_EXPIRE`: default is `30`.
+* `TIMEZONE`: default is null.
 
 ## Run container
 
@@ -39,6 +40,7 @@ sudo docker run \
   -e BACKUP_BUCKET=backups.mydomain \
   -e BACKUP_PREFIX=jenkins/ \
   -e BACKUP_EXPIRE=90 \
+  -e TIMEZONE=Japan \
   nownabe/jenkins-backup
 ```
 
