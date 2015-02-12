@@ -6,6 +6,11 @@ jenkins_home="/jenkins_backup/jenkins_home"
 backup_dir="/jenkins_backup/backups"
 s3_url=${BACKUP_BUCKET}:${BACKUP_PREFIX:-""}
 
+if [ "${TIMEONE:-UNDEF}" != "UNDEF" ]; then
+  : "Set Timezone ${TIMEZONE}"
+  cp -p /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
+fi
+
 : "Configure S3"
 s3config="/etc/s3conf/s3config.yml"
 cat <<EOF > ${s3config}
