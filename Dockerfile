@@ -17,8 +17,8 @@ RUN curl -s http://s3.amazonaws.com/ServEdge_pub/s3sync/s3sync.tar.gz | tar zx -
 RUN mkdir /etc/s3conf
 
 # Install jenkins-backup-script
-RUN curl -s -o /usr/local/bin/jenkins-backup-script https://raw.githubusercontent.com/sue445/jenkins-backup-script/master/jenkins-backup.sh && \
-  chmod +x /usr/local/bin/jenkins-backup-script
+RUN curl -s -o /usr/local/bin/jenkins-backup https://raw.githubusercontent.com/sue445/jenkins-backup-script/master/jenkins-backup.sh && \
+  chmod +x /usr/local/bin/jenkins-backup
 
 # Add backup script
 ADD backup.sh /usr/local/bin/backup
