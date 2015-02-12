@@ -1,16 +1,16 @@
 FROM centos:6.6
 MAINTAINER nownabe <nownabe@idcf.jp>
 
-VOLUME ["/jenkins", "/backup"]
+VOLUME ["/jenkins_backup/jenkins_home", "/jenkins_backup/backups"]
 
 # Update
-RUN yum -yq update && yum clean all
+RUN yum -y -q update && yum clean all
 
 # Install packages
-RUN yum -yq install tar && yum clean all
+RUN yum -y -q install tar && yum clean all
 
 # Install Ruby
-RUN yum -yq install ruby && yum clean all
+RUN yum -y -q install ruby && yum clean all
 
 # Install s3sync
 RUN curl -s http://s3.amazonaws.com/ServEdge_pub/s3sync/s3sync.tar.gz | tar zx -C /opt
