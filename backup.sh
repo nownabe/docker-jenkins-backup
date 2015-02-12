@@ -15,7 +15,8 @@ aws_calling_format: "SUBDOMAIN"
 s3sync_native_charset: UTF-8
 EOF
 
-[ -v AWS_S3_HOST ] && echo "aws_s3_host: ${AWS_S3_HOST}" >> ${s3config}
+#[ -v AWS_S3_HOST ] && echo "aws_s3_host: ${AWS_S3_HOST}" >> ${s3config}
+[ "${AWS_S3_HOST:-UNDEF}" = "UNDEF" ] || echo "aws_s3_host: ${AWS_S3_HOST}" >> ${s3config}
 
 : "Download Backups"
 /opt/s3sync/s3sync.rb -r ${s3_url} ${backup_dir}
